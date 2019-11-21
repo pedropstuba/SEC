@@ -1,0 +1,12 @@
+\BOOKMARK [1][-]{section.1}{Introduction}{}% 1
+\BOOKMARK [1][-]{section.2}{Block Diagram}{}% 2
+\BOOKMARK [1][-]{section.3}{Peripherals}{}% 3
+\BOOKMARK [2][-]{subsection.3.1}{Peripherals Used}{section.3}% 4
+\BOOKMARK [2][-]{subsection.3.2}{7-Segments Display}{section.3}% 5
+\BOOKMARK [2][-]{subsection.3.3}{Push Buttons}{section.3}% 6
+\BOOKMARK [1][-]{section.4}{Instructions}{}% 7
+\BOOKMARK [2][-]{subsection.4.1}{Clock}{section.4}% 8
+\BOOKMARK [2][-]{subsection.4.2}{Counter}{section.4}% 9
+\BOOKMARK [2][-]{subsection.4.3}{Timer}{section.4}% 10
+\BOOKMARK [1][-]{section.5}{Implementation Results}{}% 11
+\BOOKMARK [1][-]{section.6}{Conclusions}{}% 12
