@@ -1,30 +1,30 @@
-\section{Peripheral Signals}
+\section{Interface Signals}
 
-
-\begin{table}[h]
+\begin{table}[h!]
 \centering
 \caption{Peripheral interface signals.}
 \sffamily
-    \begin{tabular}{|c|c|c|c|}
+    \begin{tabular}{|c|c|c|}
         \hline
         
-        \textbf{Name} & \textbf{Direction} & \textbf{Peripheral} & \textbf{Description} \\ [0.5ex]
+        \textbf{Name} & \textbf{Direction} & \textbf{Description} \\ [0.5ex]
         \hline
         \hline
         
-        clk & IN & FPGA Clock & Clock signal \\
+        clk & IN & Clock signal \\
         
         \hline
-        rst & IN & FPGA push button & Reset signal \\
+        rst & IN & Reset signal \\
         \hline
-        mode & IN & FPGA push button & Changes the mode of operation (clock, counter or timer) \\
+        mode & IN & Changes the mode of operation (clock, counter or timer) \\
         \hline
-        seth & IN & FPGA push button & Sets the hours \\
+        seth & IN & Sets the hours \\
         \hline
-        setm & IN & FPGA push button & Sets the minutes \\
+        setm & IN & Sets the minutes \\
         \hline
-        display & OUT & FPGA 7-LEDs display & Shows the clock, timer or counter (depends on mode) \\
+        display & OUT & Shows the clock, timer or counter (depends on mode) \\
          \hline
          
     \end{tabular}
 \end{table}
+\clearpage
