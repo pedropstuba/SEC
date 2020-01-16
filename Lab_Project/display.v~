@@ -1,0 +1,112 @@
+`timescale 1ns / 1ps
+
+module display(
+	input clk,
+   	input rst,
+	input reg [1:0] hour1,
+	input reg [3:0] hour0,
+	input reg [2:0] min1,
+	input reg [3:0] min0,
+    	output reg [11:0] disp
+);
+
+
+
+
+reg [19:0] refresh_counter; // 20-bit for creating 10.5ms refresh period or 380Hz refresh rate
+                       // the first 2 MSB bits for creating 4 LED-activating signals with 2.6ms digit period
+wire [1:0] LED_activating_counter; 
+                 // count     0    ->  1  ->  2  ->  3
+                 // activates    LED1    LED2   LED3   LED4
+                 // and repeat       
+
+
+
+    
+
+
+
+
+always @(posedge clk or posedge rst)    
+    if(rst==1)
+        refresh_counter <= 0;
+   else
+      refresh_counter <= refresh_counter + 1;
+  
+assign LED_activating_counter = refresh_counter[19:18];
+
+    
+// anode activating signals for 4 LEDs, digit period of 2.6ms
+// decoder to generate anode signals 
+always @(*)
+begin
+    case(LED_activating_counter)
+	2'b00:
+	  begin
+		disp[11:8] = 4'b1110;
+		case(min0)
+			4'd0: disp[7:0] = 8'b11000000;     
+			4'd1: disp[7:0] = 8'b11111001;
+			4'd2: disp[7:0] = 8'b10100100;
+			4'd3: disp[7:0] = 8'b10110000;
+			4'd4: disp[7:0] = 8'b10011001;
+			4'd5: disp[7:0] = 8'b10010010;
+			4'd6: disp[7:0] = 8'b10000010;
+			4'd7: disp[7:0] = 8'b11111000;
+			4'd8: disp[7:0] = 8'b10000000;
+			4'd9: disp[7:0] = 8'b10010000;
+		endcase
+	  end
+	2'b01: 
+	  begin
+		disp[11:8] = 4'b1110;
+		case(min1)
+			4'd0: disp[7:0] = 8'b11000000;     
+			4'd1: disp[7:0] = 8'b11111001;
+			4'd2: disp[7:0] = 8'b10100100;
+			4'd3: disp[7:0] = 8'b10110000;
+			4'd4: disp[7:0] = 8'b10011001;
+			4'd5: disp[7:0] = 8'b10010010;
+			4'd6: disp[7:0] = 8'b10000010;
+			4'd7: disp[7:0] = 8'b11111000;
+			4'd8: disp[7:0] = 8'b10000000;
+			4'd9: disp[7:0] = 8'b10010000;
+		endcase
+	end
+      2'b10: 
+	begin
+		disp[11:8] = 4'b1110;
+		case(hour0)
+			4'd0: disp[7:0] = 8'b01000000;     
+			4'd1: disp[7:0] = 8'b01111001;
+			4'd2: disp[7:0] = 8'b00100100;
+			4'd3: disp[7:0] = 8'b00110000;
+			4'd4: disp[7:0] = 8'b00011001;
+			4'd5: disp[7:0] = 8'b00010010;
+			4'd6: disp[7:0] = 8'b00000010;
+			4'd7: disp[7:0] = 8'b01111000;
+			4'd8: disp[7:0] = 8'b00000000;
+			4'd9: disp[7:0] = 8'b00010000;
+		endcase
+	end
+      2'b11: 
+	begin
+		disp[11:8] = 4'b1110;
+		case(hour1)
+			4'd0: disp[7:0] = 8'b11000000;     
+			4'd1: disp[7:0] = 8'b11111001;
+			4'd2: disp[7:0] = 8'b10100100;
+			4'd3: disp[7:0] = 8'b10110000;
+			4'd4: disp[7:0] = 8'b10011001;
+			4'd5: disp[7:0] = 8'b10010010;
+			4'd6: disp[7:0] = 8'b10000010;
+			4'd7: disp[7:0] = 8'b11111000;
+			4'd8: disp[7:0] = 8'b10000000;
+			4'd9: disp[7:0] = 8'b10010000;
+		endcase
+	end
+    endcase		
+		 
+end
+
+endmodule
