@@ -13,19 +13,6 @@ module display(
 );
 
 
-//-------teste disp------
-		wire [1:0] 	 hour1;
-		wire [3:0] 	 hour0;
-		wire [2:0] 	 min1;
-		wire [3:0] 	 min0;
-		
-		assign hour1 = 2;
-		assign hour0 = 1;
-		assign min1 = 3;
-		assign min0 = 5;
-//-----------------------
-
-
    wire 		 disp_en;
 
 reg [17:0] refresh_counter; // 20-bit for creating 10.5ms refresh period or 380Hz refresh rate
